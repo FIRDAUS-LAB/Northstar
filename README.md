@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -232,7 +232,7 @@
 <body>
     <header>
         <div class="navbar">
-            <img src="logo.png" class="logo" width="50" height="50%">North</a>
+            <img src="logo.png" class="logo" width="50" height="50%"> North 
             <div class="nav-buttons">
                 <button><a href="file:///C:/Users/tisna/OneDrive/Desktop/Website%20lab/Firdaus%20Server(1).html">Home</a></button>
                 <button><a href="file:///C:/Users/LENOVO/Desktop/belajar%20code/New%20folder/contact.html">Contact</a></button>
