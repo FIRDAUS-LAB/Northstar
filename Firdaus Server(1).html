@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firdaus Server</title>
+    <style>
+       
+       
+        /* Title Styling */
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background: linear-gradient(to right, #00008B, #87CEEB);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    font-family: 'Courier New', Courier, monospace;
+    color: #FFD700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+nav {
+    margin-top: 20px;
+}
+
+.nav-link {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    border: 2px solid #87CEEB;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #87CEEB;
+    color: white;
+    transform: scale(1.1);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.slide {
+    display: none;
+    padding: 20px;
+    text-align: center;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+    display: block;
+    opacity: 1;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: #333;
+    border-top: 1px solid #ddd;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.nav-button:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-button svg {
+    fill: none;
+    stroke: white;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Selamat Datang di Web Firdaus Ramdan</h1>
+        <!-- Navigation -->
+        <nav>
+            <a href="#" class="nav-link">HOME</a>
+            <a href="#" class="nav-link">Contact</a>
+            <a href="#" class="nav-link">Login Yuk</a>
+            <a href="#" class="nav-link">3 Tema Tentang Pembelajaran</a>
+            <a href="#" class="nav-link">Pembelajaran</a>
+        </nav>
+    </header>
+
+    >
+    <div class="container">
+        <div class="slide active">
+            <h2>Siapakah aku?</h2>
+            <div class="profile-section">
+                <img src="profile.jpg" alt="Firdaus" class="profile-img">
+                <div class="profile-text">
+                    <h3>Nama ku Firdaus</h3>
+                    <p>aku bernama Firdaus Ramdan. aku biasa dikenal dengan <b>Firdaus, North, takahashi, ataupun Arlington</b><br>
+                    tapi semua itu gak salah karena aku biasanya memakai nama pena untuk menyembunyikan identitasku di dunia nyata</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <h2>Kontak</h2>
+            <div class="contact-section">
+                <div class="contact-item">
+                    <h3>TikTok</h3>
+                    <img src="tiktok.png" alt="TikTok Logo">
+                    <p>@firdaus_tiktok</p>
+                </div>
+                <div class="contact-item">
+                    <h3>YouTube</h3>
+                    <img src="youtube.png" alt="YouTube Logo">
+                    <button onclick="window.open('http://www.youtube.com/@Fyrrdam_indo', '_blank')">Kunjungi Channel: Fyrrdam_indo</button>
+                </div>
+                <div class="contact-item">
+                    <h3>Gmail</h3>
+                    <p>Untuk pertanyaan atau informasi, hubungi saya melalui email:</p>
+                    <a href="mailto:firdausramdan470@gmail.com" class="email-link">Hubungi Saya</a>
+                </div>
+                <div class="contact-item">
+                    <h3>Roblox</h3>
+                    <img src="roblox.png" alt="Roblox Logo">
+                    <p>@firdaus_roblox</p>
+                </div>
+            </div>
+        </div>
+        <div class="navigation">
+            <button id="prev" onclick="prevSlide()" class="nav-button" disabled>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 19L8 12L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <button id="next" onclick="nextSlide()" class="nav-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+
+    <section id="contact">
+        <h1>Kontak</h1>
+        <!-- Konten kontak dapat ditambahkan di sini -->
+    </section>
+
+    <section id="experience">
+        <h1>Pengalaman</h1>
+        <p>aku memiliki berbagai pengalaman karena aku suka menganalisa dan belajar yang ku suka ataupun hanya sekedar waktu luang</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Jenjang Pendidikan</th>
+                    <th>Institusi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Lulusan SD</td>
+                    <td>SDN 01 Pasar Minggu</td>
+                </tr>
+                <tr>
+                    <td>Lulusan SMP</td>
+                    <td>SMPN 218 Jakarta</td>
+                </tr>
+                <tr>
+                    <td>Lulusan SMK</td>
+                    <td>SMKN 8 Jakarta</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            prevButton.disabled = index === 0;
+            nextButton.disabled = index === slides.length - 1;
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+
+        // Add any JavaScript functionality here if needed in the future
+// Example: Adding a simple alert for demonstration
+document.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+});
+
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const prevButton = document.getElementById('prev');
+const nextButton = document.getElementById('next');
+
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+    });
+    prevButton.disabled = index === 0;
+    nextButton.disabled = index === slides.length - 1;
+}
+
+function prevSlide() {
+    if (currentSlide > 0) {
+        currentSlide--;
+        showSlide(currentSlide);
+    }
+}
+
+function nextSlide() {
+    if (currentSlide < slides.length - 1) {
+        currentSlide++;
+        showSlide(currentSlide);
+    }
+}
+
+    </script>
+</body>
+</html>

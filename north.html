@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,7 +11,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background-color: #333;
+            background-color: #05a1c9;
             color: #fff;
             padding: 10px 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -87,7 +87,7 @@
             color: #fff;
             padding: 15px 0;
             text-align: center;
-            position: sticky;
+            position:static;
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -174,13 +174,9 @@
             background-color: #555;
         }
 
-        #book-container:active {
-            transform: scale(1.05);
-        }
-
          /* Floating Zoom Buttons */
          .zoom-controls {
-            position: fixed;
+            position:fixed;
             bottom: 20px;
             right: 20px;
             display: flex;
@@ -225,6 +221,135 @@
             font-family: Arial, sans-serif;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
+        .scroll-indicator {
+            position:fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #87CEEB;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator:hover {
+            background-color: #4682B4;
+        }
+
+        #scroll-top {
+            position:fixed;
+            bottom: 70px;
+            left: 20px;
+            background-color: #87CEEB;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        #scroll-top:hover {
+            background-color: #4682B4;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        .dark-mode header {
+            background-color: #1f1f1f;
+        }
+
+        .dark-mode .container {
+            background-color: #1f1f1f;
+            border-color: #333;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 20px;
+            }
+
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+        }
+
+        /* Dark Mode Toggle Button */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: #555;
+        }
+        .social-share button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .social-share button:hover {
+            background-color: #555;
+        }
+
+        /* Comments Section */
+        .comments {
+            margin-top: 40px;
+        }
+
+        .comments h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        .dark-mode header {
+            background-color: #1f1f1f;
+        }
+
+        .dark-mode .container {
+            background-color: #1f1f1f;
+            border-color: #333;
+        }
+
 
     </style>
 </head>
@@ -232,120 +357,277 @@
 <body>
     <header>
         <div class="navbar">
-            <img src="logo.png" class="logo" width="50" height="50%"> 
+            <form action="/search" method="GET">
+                <input type="text" name="query" placeholder="Search...">
+                <button type="submit">Search</button>
+            </form>
+            <img src="logo.png" style="width: 50px;height: 50%;border: 3px solid blue;"> North </img>
             <div class="nav-buttons">
-                <button><a href="file:///C:/Users/tisna/OneDrive/Desktop/Website%20lab/Firdaus%20Server(1).html">Home</a></button>
+                <button><a href="home.html">Home</a></button>
                 <button><a href="file:///C:/Users/LENOVO/Desktop/belajar%20code/New%20folder/contact.html">Contact</a></button>
-                <button><a href="file:///C:/Users/LENOVO/Desktop/belajar%20code/New%20folder/login.html">Login Yuk</a></button>
-                <button><a href="file:///C:/Users/LENOVO/Desktop/belajar%20code/New%20folder/pembelajaran.html">3 Tema Pembelajaran</a></button>
-                <button><a href="file:///C:/Users/tisna/OneDrive/Desktop/Website%20lab/link%20belajar.html" style="color: red;">Pembelajaran</a></button>
-                
+                <<button><a href="https://drive.google.com/drive/folders/1349D7i0JPorJ7xhsJhfGtMiIj5c7Y0YV?usp=sharing">Gdrive</a></button>
+                <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button><br>
             </div>
         </div>
     </header>
-
+    
     <div id="book-container">
         <div class="book-page" id="page-1">
-            <h2>Bab 1 - Kota Lembah Emas</h2>
+            <h2>Bab 1 - Pendahuluan</h2>
             <p><i>Malam tiba di Kota Lembah Emas. Langit dipenuhi bintang-bintang, sementara gedung-gedung besar berdiri megah menghiasi pemandangan. Namun, ada sesuatu yang terasa ganjil. Setiap bangunan—dari rumah kecil hingga gedung pencakar langit—dilengkapi dengan pengait besar di atapnya. Tidak ada yang tahu pasti tujuan benda itu, dan penduduk kota jarang membicarakannya, seolah-olah itu hanyalah bagian biasa dari kehidupan sehari-hari. <br>
 
-                <br>Kota Lembah Emas dikenal sebagai pusat kemakmuran. Dengan tambang emas besar di lembah dan hutan luas di kaki gunung, kota ini memegang kekayaan alam yang melimpah. Mata uangnya, LB, lebih mahal dan kuat dibandingkan kota mana pun, menjadi simbol kejayaan yang membuat daerah ini disegani. Namun, di balik kemewahan dan gemerlapnya, ada misteri yang membuat penduduk selalu waspada: getaran misterius yang datang tanpa peringatan.<br>
-                <br>Guncangan itu terjadi hampir setiap siang hari. Tidak peduli seberapa kokoh bangunannya, setiap minggu ada saja gedung yang runtuh atau retak. Rumor terus beredar—mulai dari penjelasan logis seperti aktivitas lempeng bumi atau dampak tambang yang terlalu dalam, hingga desas-desus yang jauh lebih gelap. Sebagian orang percaya bahwa getaran itu adalah peringatan dari makhluk kuno yang tinggal jauh di dalam perut bumi, penjaga kekayaan alam Lembah Emas.<br>
-                <br>Aku sendiri tidak percaya semua itu. Hingga kini, belum ada informasi resmi yang dapat menjelaskan penyebab getaran ini. Ilmuwan tidak pernah datang untuk menyelidiki, atau mungkin mereka sengaja tidak diundang. Tidak ada penelitian, tidak ada jawaban. Anehnya, meskipun misteri ini belum terpecahkan, kota ini tidak pernah kehilangan penduduk. Orang-orang tetap berdatangan, tergoda oleh janji kekayaan yang mengalahkan rasa takut<br>
+               <br>kota Lembah Emas dikenal sebagai pusat kemakmuran. Dengan tambang emas besar di lembah dan hutan luas di kaki gunung, kota ini memegang kekayaan alam yang melimpah. Mata uangnya, LB, lebih mahal dan kuat dibandingkan kota mana pun, menjadi simbol kejayaan yang membuat daerah ini disegani. Namun, di balik kemewahan dan gemerlapnya, ada misteri yang membuat penduduk selalu waspada: getaran misterius yang datang tanpa peringatan.<br>
+                <br>Guncangan itu terjadi hampir setiap siang hari. Tidak peduli seberapa kokoh bangunannya, setiap minggu ada saja gedung yang runtuh atau retak. Rumor terus beredar—mulai dari penjelasan logis seperti aktivitas lempeng bumi atau dampak tambang yang terlalu dalam, hingga desas-desus yang jauh lebih gelap. Sebagian orang percaya bahwa getaran itu adalah peringatan dari makhluk kuno yang tinggal jauh
+
+      <br>Aku sendiri tidak percaya semua itu. Hingga kini, belum ada informasi resmi yang dapat menjelaskan penyebab getaran ini. Ilmuwan tidak pernah datang untuk menyelidiki, atau mungkin mereka sengaja tidak diundang. Tidak ada penelitian, tidak ada jawaban. Anehnya, meskipun misteri ini belum terpecahkan, kota ini tidak pernah kehilangan penduduk. Orang-orang tetap berdatangan, tergoda oleh janji kekayaan yang mengalahkan rasa takut<br>
                 <br>Namun, semakin lama aku tinggal di sini, semakin aku merasa ada sesuatu yang disembunyikan. Pengait-pengait di atap, gedung-gedung yang dibangun ulang berulang kali, dan sikap penduduk yang tampaknya menghindari topik ini. Kota ini seperti diam-diam menyimpan rahasia besar.<br>
                 <br>Hingga suatu hari, aku melihat sesuatu yang mengubah semuanya.<br></i>
             </p> 
             <p> North Arlington <br>
                 29.9.2009<br>
             </p>
-            <p align="center"> 2 </p>
         </div>
         <div class="book-page" id="page-2">
-           
-            <p>Aku, North, seorang arsitek dengan ambisi besar, harapan tinggi, dan, jujur saja, temperamen yang meledak-ledak. Hidupku, kalau boleh dirangkum dalam satu kata, adalah “rumit.” Kadang terasa seperti ada skenario takdir yang dirancang khusus untuk menjatuhkanku. <br> <br>
+            <h2>Bab 2 - Siapa?</h2>
+            <p>Aku, North, seorang arsitek dengan ambisi besar, harapan tinggi, dan, jujur saja, temperamen yang meledak-ledak. Hidupku, kalau boleh dirangkum dalam satu kata, adalah “rumit.” Kadang terasa seperti ada skenario takdir yang dirancang khusus untuk menjatuhkanku.
+             <br> <br>
+                Aku benci berpindah-pindah dari satu kota ke kota lain demi pekerjaanku. Bukan karena aku tidak suka perjalanan—tapi karena jalanan itu sendiri adalah musuhku. Lihat saja, jalan dari kota ke kota harus melewati hutan dengan lintasan penuh batu kasar, berlubang, dan terabaikan. Kayaknya jalanan ini belum pernah disentuh perbaikan sejak zaman dinosaurus punah. Aku bahkan merasa kalau batu-batu itu sengaja menunggu mobilku lewat untuk meledakkan bannya. Aku sudah mengeluarkan uang lebih untuk ban baru, entah sudah berapa kali. Benar-benar menyiksa dompetku. Kalau bisa, aku ingin tinggal di satu kota indah, dengan jalanan mulus, setidaknya untuk setahun saja. Tapi hidupku, seperti biasa, tidak pernah semudah itu.
+                <br> <br>
+                Besok paginya, aku melangkah masuk ke kantor FCorp, tempat aku bekerja. Hari ini akan ada pembagian tugas baru untuk para arsitek. Sejujurnya, ini adalah salah satu momen yang selalu kunantikan. Apa aku menantikannya karena aku berharap mendapat proyek di kota indah? Tidak, tentu saja tidak. Aku menunggu ini karena... aku bisa duduk berdekatan dengan Ciera, seorang kolega yang entah bagaimana selalu berhasil membuatku kehilangan fokus.
+                <br> <br>
+                Aku menyukai Ciera. Bukan cinta pada pandangan pertama, tapi, ya... bisa dibilang hampir seperti itu. Aku tidak tahu bagaimana menjelaskan perasaanku—dia terlalu berbeda dariku. Dia tenang, penuh percaya diri, tapi juga sarkastik dan dingin. Semacam teka-teki hidup yang selalu ingin kupecahkan.
+                <br> <br>
+                Ketika rapat dimulai, seperti biasa, aku berusaha memastikan aku bisa duduk cukup dekat dengannya. Aku hanya ingin mencuri beberapa detik untuk memandang wajahnya, itu saja. Namun, seperti biasa juga, Ciera selalu menyadarinya.
+                <br> <br>
+                "Kenapa kamu memandangku seperti itu? Kamu aneh tahu," katanya, dengan nada datar dan ekspresi yang nyaris tak berubah.
+                <br> <br>
+                "Eh, aku cuma... memandang poster di belakangmu," jawabku buru-buru, mencoba terdengar santai.
+                <br> <br>
+                Dia menoleh ke belakang, ke arah poster yang aku maksud. Sekilas aku pikir dia akan marah atau merasa terganggu, tapi ternyata dia malah tersenyum, meskipun senyum itu lebih seperti menahan tawa. "Seleramu aneh juga," katanya sambil menunjuk poster itu.
+                <br> <br>
+                Aku menoleh ke arah yang sama, dan langsung ingin menghilang ke bawah meja. Poster itu adalah iklan panggilan untuk para kuli berotot, dengan gambar pria-pria besar yang memamerkan otot mereka di bawah terik matahari. Apa-apaan ini? Malunya bukan main. Aku hanya bisa mengalihkan pandangan kembali ke presentasi di depan ruangan, pura-pura fokus pada omong kosong motivasi dari petinggi perusahaan.
+                <br> <br>
+                Tapi sebenarnya, tidak ada satu pun kata dari mereka yang masuk ke telingaku. Aku terlalu sibuk memikirkan bagaimana aku bisa memperbaiki kesan di depan Ciera. Hidupku benar-benar penuh dengan momen-momen memalukan seperti ini. 
+                <br> <br>
+                Rapat akhirnya selesai. Aku bersandar di kursi, hampir tertidur, sampai tiba-tiba salah satu petinggi mendatangiku dengan sebuah amplop tebal. Amplop itu tampak begitu menjanjikan—cukup untuk membuatku langsung tersadar. Aku menatapnya dengan penuh harap. "Apa ini? Bonus? Uang? Atau... uang?" pikirku. Otakku memang sederhana: apa lagi yang bisa diharapkan selain uang?
+                <br> <br>
+Dengan rasa penasaran dan sedikit terlalu banyak imajinasi, aku membuka amplop itu. Namun, begitu aku melihat isinya, harapanku runtuh seperti gedung tanpa fondasi yang benar. Dokumen tugas. Ya, tugas baru. Aku terdiam, mencoba mencerna kekecewaanku. "Kenapa sih hidup selalu begini?" gerutuku dalam hati.
+<br> <br>
+Tapi tunggu. Tugas kali ini ada yang berbeda. Nama lokasinya: Lembah Emas. Aku membaca lagi untuk memastikan. Lembah Emas? Apa itu berarti ada emas di mana-mana? Kalau benar, bukankah aku bisa kaya? Pikiran itu langsung membakar semangatku. "Ini mungkin kesempatan terbaikku untuk mengubah nasib!" pikirku sambil buru-buru mengemasi barang-barangku.
+<br> <br>
+Peralatan kerja adalah hal yang paling aku jaga. Jam tangan, topi arsitek, dan jas andalan yang pernah menolongku dari banyak kejadian buruk. Ah, terlalu banyak cerita tentang itu, jadi aku malas menjelaskannya sekarang. Fokusku adalah Lembah Emas. Aku hanya perlu bersiap-siap dan berangkat.
+<br> <br>
+Namun, sebelum aku benar-benar bisa berlari keluar kantor, Ciera tiba-tiba muncul di hadapanku. Langkahnya tergesa-gesa, dan wajahnya terlihat seperti ada hal penting yang ingin disampaikan. Jantungku langsung berdegup lebih cepat. Sesuatu yang penting! Apa ini saatnya? Apakah dia akan bilang dia menyukaiku?
+<br> <br>
+"North, aku ingin mengatakan sesuatu," katanya, serius.
+<br> <br>
+Ini dia! Aku menunggu dengan seluruh ekspektasi terbaik yang pernah kumiliki. Rasanya seluruh dunia berhenti sejenak, hanya menyisakan aku dan Ciera di ruangan itu.
+<br> <br>
+"Kalau kamu mau badan yang bagus, mending coba masuk ke grup olahraga milik ayahku. Dia pelatih terbaik, mantan tentara. Aku yakin dia bisa membantumu," katanya, tanpa jeda.
+<br> <br>
+Dang. Rasanya seperti ditampar papan proyek. Ekspetasiku hancur berkeping-keping. Aku terdiam, setengah kaku seperti batu bata baru dicetak. "Baiklah, aku mungkin akan mempertimbangkannya. Aku punya banyak kegiatan lain, jadi mungkin aku bisa di hari libur," jawabku akhirnya, mencoba tetap terdengar cool.
+<br> <br>
+Ciera hanya mengangguk ringan, lalu pergi begitu saja tanpa banyak basa-basi. Biasa. Begitulah dia. Kadang aku bertanya-tanya kenapa aku bisa tertarik pada seseorang yang selalu menghancurkan ekspektasiku berkali-kali.
+<br> <br>
+Setelah kejadian itu, aku kembali fokus pada tugas ke Lembah Emas. Aku memeriksa daftar barang bawaan dan memastikan semua siap. Ini akan menjadi perjalanan panjang, dan aku harus benar-benar mempersiapkan diri. Aku berjalan ke mobil dengan penuh semangat, tapi… dimana kunciku? Aku mengaduk-aduk kantong celana, tas, dan bahkan jas favoritku, tapi kunci itu tidak ada di mana-mana. "Astaga, kenapa lagi hidupku begini?"
+<br> <br>
+Kereta akhirnya berhenti di stasiun Lembah Emas. Aku melangkah keluar dengan koper besar di tangan, sedikit terengah karena beban beratnya. Semua ini gara-gara aku lupa di mana menaruh kunci mobilku. Untungnya, mobil itu kutinggalkan di parkiran yang katanya aman. Kata Satpam sih begitu. Tapi, ya... aku tidak pernah benar-benar yakin.
+<br> <br>
+Udara di kota ini terasa berbeda. Ada aroma khas yang tidak bisa kujelaskan, semacam bau logam yang samar, bercampur dengan aroma bunga-bunga dari taman kota yang terlihat dari kejauhan. Ini adalah kota impianku—tempat di mana kekayaan dan kesuksesan seperti menetes dari setiap sudutnya. Orang-orang selalu bilang kalau mata uang LB, mata uang lokal kota ini, punya nilai yang lebih tinggi dibandingkan kota mana pun. Tapi sekarang, aku tidak merasa seperti orang sukses. Aku hanya merasa seperti orang asing dengan koper berat dan dompet tipis.
+<br> <br>
+Saat melangkah keluar dari halte, mataku tertuju pada seorang pria yang sedang membagikan brosur. Tapi tunggu, dia bukan pembagi brosur biasa. Penampilannya... terlalu mewah. Jasnya hitam rapi dengan dasi merah anggur yang mengilap. Bahkan sepatunya tampak lebih mahal dari koperku. Dia seperti orang kaya yang nyasar menjadi pemasar jalanan.
+<br> <br>
+Aku mendekatinya dengan rasa penasaran. Pria itu menoleh, dan senyumnya segera merekah, seperti dia sudah menungguku sejak tadi. Yang kuingat jelas darinya adalah aroma khas cengkih yang tajam.
+<br> <br>
+"Halo, Tuan," sapanya ramah. Suaranya lembut tapi ada sesuatu yang membuatnya terasa menusuk. "Apa Anda baru di sini? Saya punya penawaran bagus untuk Anda. Sebuah peta lengkap Kota Lembah Emas. Jika Anda tersesat, peta ini akan menjadi penyelamat Anda."
+<br> <br>
+Aku menatapnya lekat-lekat, mencoba menganalisisnya. Ada sesuatu yang aneh dari cara dia berbicara, seperti dia tahu sesuatu tentangku. "Berapa harga brosur itu?" tanyaku, mencoba terdengar santai.
+<br> <br>
+"Hanya 10 LB. Itu setara dengan Rp100.000. Penawaran yang sangat murah untuk pendatang baru seperti Anda," katanya sambil tersenyum lebih lebar.
+<br> <br>
+100.000? Aku hampir tersedak udara. Itu uang terakhirku. Uang makan sebulan saja tidak pernah sebesar itu. Aku membuka dompet, memastikan lagi kalau aku tidak salah. Ya, isinya cuma 100.000 pas. Sial, hari ini benar-benar tidak berpihak padaku.
+<br> <br>
+Aku menatap pria itu lagi, lalu ke brosur di tangannya. Rasa ragu dan frustrasi berperang di kepalaku. "Baiklah," gumamku akhirnya, menarik napas panjang sebelum mengeluarkan uang itu. Tanganku gemetar saat menyerahkannya.
+<br> <br>
+"Wah, Tuan, Anda benar-benar murah hati... dan naif," katanya sambil tersenyum, kali ini lebih tajam. Aku masih memegang ujung uangnya, ragu-ragu melepaskannya.
+<br> <br>
+"Apa tidak ada diskon? 20% saja?" tanyaku, mencoba negosiasi terakhir dengan suara kecil.
+<br> <br>
+"Maaf, tidak ada diskon. Anda sudah memutuskan membelinya, jadi uang tidak bisa dikembalikan," jawabnya dengan nada tegas tapi tetap sopan.
+<br> <br>
+Dengan berat hati, aku akhirnya merelakan uang terakhirku. Pria itu menggenggam uangku dengan ringan, lalu memasukkannya ke kantong celana hitamnya dengan anggun. Dia merapikan dasinya, menatapku lagi dengan tatapan yang sulit diartikan.
+<br> <br>
+"Terima kasih sudah berbisnis dengan saya, Tuan. Tapi, izinkan saya memberi Anda peringatan," katanya, suaranya tiba-tiba lebih pelan namun tajam. "Kota ini bukanlah tempat untuk orang senaif Anda. Di sini, baik orang jahat maupun orang baik bisa menghabisi Anda. Saya harap Anda siap."
+<br> <br>
+Sebelum aku sempat merespons, dia melangkah pergi dengan tenang, tanpa pamit. Bau cengkihnya masih tertinggal di udara.
+<br> <br>
+Aku berdiri di sana, memegang brosur yang baru saja menghabiskan seluruh uangku. Kata-katanya terus terngiang di kepalaku. "Orang baik pun bisa menghabisi Anda." Apa maksudnya? Kenapa dia berbicara seolah-olah dia tahu sesuatu tentangku?
+<br> <br>
+Tapi aku memutuskan untuk mengabaikan semua itu. Aku terlalu lelah dan lapar untuk memikirkan hal-hal aneh. Yang penting sekarang adalah mencari makan... walaupun aku bahkan tidak tahu bagaimana melakukannya tanpa uang.
+<br> <br>
+Saat aku pertama kali menginjakkan kaki di tanah Lembah Emas, angin berhembus lembut seolah menyambut kedatanganku. Kota ini luar biasa indah. Gedung-gedung modern menjulang dengan desain arsitektur yang sempurna, pohon-pohon besar berjajar rapi di sepanjang jalan, dan orang-orang berpakaian bisnis berjalan dengan langkah cepat, sibuk dengan urusan masing-masing. Rasanya seperti melangkah ke masa depan—kota yang kaya, tertata, dan begitu hidup.
+<br> <br>
+Aku sedang mencari Jalan Anggrek, lokasi proyek baruku. Meskipun aku sebenarnya mampu menangani beberapa gedung sekaligus, untuk sekarang aku memutuskan untuk fokus pada satu gedung saja. Namun, ada satu masalah besar: kota ini terlalu besar. Aku terus berjalan, mencoba membaca peta yang kubawa, tapi semua jalan terlihat sama. Aku mulai merasa seperti orang linglung—capek, bingung, dan lapar.
+<br> <br>
+Saat kelelahan mulai menyergap, aku melihat sebuah kursi taman di bawah bayang-bayang pohon. Aku segera duduk, mengusap wajahku yang basah oleh keringat. Udara panas di kota ini terasa menusuk, dan itu semakin membuatku sadar akan kondisi dompetku yang kosong. Tidak ada uang untuk beli es. Tidak ada uang untuk apa pun.
+<br> <br>
+Saat aku sedang tenggelam dalam pikiran, pandanganku tertuju pada seorang pria yang berdiri tidak jauh dariku. Pria itu terlihat sangat... aneh. Umurnya mungkin sekitar 40-an, tapi pakaiannya seperti dari zaman lain—mantel panjang yang sudah usang, sepatu bot tua, dan topi lebar yang terlihat terlalu besar untuk kepalanya. Tidak ada yang seperti dia di kota ini, yang penuh dengan orang-orang berpakaian rapi dan modern.
+<br> <br>
+Tapi yang benar-benar menarik perhatianku adalah cara dia berteriak.
+<br> <br>
+"Suatu hari, makhluk kuno itu akan bangkit! Dia akan membalas semua perbuatan kalian! Dia tidak akan memaafkan dosa-dosa kalian!" suaranya lantang, penuh keyakinan. Orang-orang yang lewat hanya melirik sekilas, lalu kembali sibuk dengan urusan masing-masing, seolah pria itu tidak ada.
+<br> <br>
+Aku mencoba mengabaikannya, tapi rasa penasaran menang. Aku berdiri dan berjalan mendekatinya. "Pak, maaf mengganggu," kataku, setengah ragu. "Tapi... apa benar ada makhluk kuno di kota ini?"
+<br> <br>
+Dia menoleh dengan ekspresi penuh semangat, seolah menunggu seseorang untuk akhirnya mendengarkannya. "Oh, tentu saja ada! Bapak sendiri pernah melihatnya dengan mata kepala bapak sendiri. Dia besar, ganas, dan sangat kuat! Nak, jangan pernah berbuat jahat di kota ini. Kalau kamu melakukannya, makhluk itu akan membalasmu. Itu sudah pasti!"
+<br> <br> 
+Aku menatapnya, mencoba mencari tanda-tanda bahwa dia sedang bercanda. Tapi wajahnya serius. Aku tidak tahu harus percaya atau tidak, tapi aku merasa menyesal sudah bertanya. "Tapi, Pak, yakin itu bukan cuma bayangan tikus atau sesuatu yang lain? Makhluk kuno kan cuma mitos..." kataku, mencoba terdengar masuk akal.
+<br> <br>
+Pria itu langsung berubah. Matanya membulat, suaranya meninggi. "Tidak! Ini nyata! Aku sangat yakin dia ada di bawah kota ini, tidur di perut bumi, menunggu waktu untuk bangkit!"
+<br> <br>
+Suasana mendadak canggung. Aku menghela napas, merasa ini percakapan yang tidak akan ke mana-mana. "Baiklah, Pak. Kalau begitu terima kasih sudah memberitahu saya soal makhluk itu. Tapi saya harus pergi, ada urusan lain."
+<br> <br>
+Dia menatapku dengan senyum tipis, seperti puas karena sudah menyampaikan pesannya. Sebelum aku sempat berbalik pergi, dia merogoh sesuatu dari kantongnya dan menyodorkannya padaku. Sebuah kertas lusuh.
+<br> <br>
+"Apa ini?" tanyaku, menerima kertas itu dengan ragu.
+<br> <br>
+"Itu ajakan untuk bergabung dengan komunitas kami, orang-orang yang percaya pada makhluk kuno. Kalau kamu berubah pikiran, kami selalu ada untuk menyambutmu," katanya sambil tersenyum.
+<br> <br>
+Aku terdiam beberapa saat, menatap kertas itu. Kenapa dia memberikannya padaku? Aku jelas-jelas tadi bilang aku tidak percaya. Tapi aku hanya mengangguk dan memasukkan kertas itu ke dalam saku, meskipun aku tahu aku tidak akan pernah bergabung.
+<br> <br>
+Saat aku melangkah pergi, pikiranku dipenuhi dengan kata-kata pria itu. Makhluk kuno? Benarkah itu ada? Tapi tidak, aku menepis pikiran itu. Itu pasti omong kosong. Aku hanya perlu fokus pada proyekku dan mencari jalan ke Jalan Anggrek. Tapi jauh di lubuk hati, aku tidak bisa sepenuhnya mengabaikan apa yang dia katakan.
+<br> <br>
+Saat aku tiba di Jalan Anggrek, aku langsung menyadari satu hal: rumah itu belum jadi. Aku berdiri memandangi lahan kosong dengan beberapa tiang kayu yang setengah jadi, seolah-olah proyek ini ditinggalkan di tengah jalan. Di amplop yang diberikan petinggi perusahaan, tempat ini sudah dikatakan akan menjadi tempat tinggalku selama di Lembah Emas. Tapi siapa yang menyangka aku harus tinggal di sebuah proyek setengah jalan?
+<br> <br>
+Petinggi brengsek. Mereka selalu memikirkan tugas, tugas, dan tugas, tapi tidak pernah memikirkan kondisi karyawannya.
+<br> <br>
+Setidaknya, aku punya ilmu arsitektur dari kuliah, dan mungkin itu akan menyelamatkanku dari hidup di tempat yang hanya berisi tiang dan debu. Aku menarik napas panjang dan berjalan ke arah para kuli bangunan yang sedang bekerja. Mereka terlihat sangat sibuk mengangkat balok-balok kayu berat, dan tubuh mereka yang penuh otot berkilauan di bawah sinar matahari. Aku memperhatikan sejenak—mereka jelas bukan orang asli Lembah Emas. Wajah mereka menunjukkan tanda-tanda urbanisasi, mungkin orang dari kota kecil atau desa yang datang ke sini untuk mencari nafkah.
+<br> <br>
+Aku mendekati mereka dengan sopan. "Permisi, apa kalian butuh arsitek buat bantu bangun rumah ini?" tanyaku dengan nada yang, menurutku, cukup profesional.
+<br> <br>
+Semua pekerja berhenti bekerja dan memandangku. Aku hanya bisa berdiri di sana, dikelilingi oleh pria-pria besar yang tingginya jauh di atasku. Salah satu dari mereka, seorang pria dengan kumis tebal dan wajah keras, menyipitkan matanya sambil mengamatiku dari atas ke bawah.
+<br> <br>
+"Kamu yakin? Tapi kamu kan masih kecil. Jangan pura-pura dewasa," katanya ragu.
+<br> <br>
+Kecil? Anak kecil? Aku hampir tersedak udara. Oh, benar. Tinggiku hanya 165 cm, dan dengan tubuh kecilku, aku memang sering dikira anak remaja. Tapi tetap saja, dibilang anak kecil seperti itu benar-benar menyakitkan.
+<br> <br>
+"Aku sudah berumur 20-an. Jangan panggil aku anak kecil," jawabku dengan nada tajam, mencoba mempertahankan martabatku.
+<br> <br>
+Seorang kuli lain, pria berjenggot dengan senyum jahil, ikut angkat bicara. "Oh, kalau kamu bukan anak kecil, coba bikin gambar arsitek. Jangan-jangan gambarmu mirip coretan anak TK."
+<br> <br>
+Aku langsung mendidih. "Baik! Aku akan menggambar. Tapi kalian harus janji bikin gambarnya dengan benar!" seruku dengan nada marah.
+<br> <br>
+Aku segera merogoh tas dan mengeluarkan meja lipat portabelku, bersama beberapa alat gambar dan blue print. Para kuli tertawa kecil, mungkin mereka mengira aku hanya akan membuat gambar asal-asalan. Padahal, aku pun sebenarnya sedang bingung mau menggambar apa.
+<br> <br>
+Aku menatap lokasi yang ada di depanku. Sumber daya di sini tidak melimpah, jadi aku harus membuat desain yang hemat biaya tapi tetap terlihat bagus. Setelah beberapa detik berpikir, aku memutuskan membuat desain rumah dengan gaya Amerika klasik. Gaya ini adalah favoritku—minimalis, fungsional, dan elegan.
+<br> <br>
+Tangan kecilku mulai bekerja, memindahkan ide di kepala ke kertas biru. Garis-garis tegak, lengkung, dan detail kecil perlahan-lahan muncul. Aku membayangkan atap tinggi berbentuk segitiga, dengan jendela besar yang memungkinkan cahaya masuk ke dalam rumah. Warna putih pada dinding eksterior, dengan sentuhan kayu alami di beberapa bagian, akan membuat rumah ini tampak hangat dan menyatu dengan lingkungan.
+<br> <br>
+Ketika aku selesai, aku menepuk kertas itu dengan bangga. "Ini. Kalau kalian bilang ini mirip gambar anak TK, aku rasa kalian yang perlu belajar lebih banyak soal arsitektur."
+<br> <br>
+Para kuli mendekat dan mengintip gambar itu. Wajah mereka berubah—mereka tampak terkejut. Pak Kumis mengambil blueprint itu, mengamatinya dengan lebih saksama, lalu mengangguk pelan. "Ini... cukup bagus," katanya akhirnya.
+<br> <br>
+"Bagus? Ini sempurna!" tukasku dengan nada penuh percaya diri.
+<br> <br>
+"Baiklah, Tuan Arsitek," kata si Jenggot sambil tersenyum. "Kalau memang kamu bisa bikin desain sebagus ini, kami akan pastikan rumah ini selesai sesuai gambar."
+<br> <br>
+Aku tersenyum puas, meskipun sebenarnya hatiku masih sedikit panas karena insiden tadi. Setidaknya, mereka akhirnya mengakui kemampuanku.
+<br> <br>
+Pengerjaan rumah di Jalan Anggrek berjalan lambat hari ini. Aku berdiri di tengah lokasi proyek, mengamati para kuli yang terlihat malas-malasan. Ada yang duduk di atas tumpukan kayu, ada yang berbaring di belakang tiang, bahkan ada yang tertidur di bawah bayangan pondasi rumah yang masih setengah jadi.
+<br> <br>
+Padahal, ini masih jam kerja.
+<br> <br>
+Aku mulai merasa kesal. "Hei, kenapa kalian malas-malasan? Ayo kerja!" seruku dengan nada marah, mencoba terdengar tegas.
+<br> <br>
+Mereka semua menoleh. Si Janggut, dengan rokok terselip di jarinya, bangkit berdiri perlahan. Si Kumis yang duduk di dekatnya ikut berdiri, menatapku sambil mengangkat alis.
+<br> <br>
+"Kami juga manusia, Nak. Bukan robot. Jadi ya, kami butuh istirahat," kata Si Janggut dengan nada datar, tapi tegas.
+<br> <br>
+Kata-katanya membuatku terdiam. Apa aku terlalu keras pada mereka? Mereka bekerja dengan tangan dan tenaga setiap hari, di bawah panas matahari, sementara aku hanya duduk menggambar di atas meja lipatku. Aku sadar, mungkin aku terlalu mirip petinggi FCorp yang hanya peduli hasil, tanpa peduli kondisi pekerjanya. Itu bukan hal yang aku inginkan.
+<br> <br>
+Aku menarik napas panjang, menurunkan nada suaraku. "Baiklah... Apa yang kalian butuhkan? Aku akan traktir," kataku akhirnya.
+<br> <br>
+Ekspresi mereka berubah. Wajah-wajah lelah itu tiba-tiba berbinar. Mereka tersenyum lebar, seperti anak kecil yang baru mendapat hadiah. "Sebungkus rokok, kopi, sama pisang goreng aja, Nak," kata Si Kumis sambil terkekeh.
+<br> <br>
+Permintaan mereka sederhana. Untung saja, tidak membuatku harus merogoh kantong terlalu dalam. Aku segera membeli apa yang mereka minta di warung terdekat, dan ketika kembali, mereka makan dengan lahap. Melihat mereka makan dengan begitu semangat, aku merasa lega. Mereka butuh tenaga besar untuk pekerjaan ini, dan aku senang bisa sedikit membantu.
+<br> <br>
+Setelah suasana mulai tenang, aku duduk di atas jendela setengah jadi, menggambar blueprint gedung sambil menikmati angin sore. Tiba-tiba, Si Janggut menghampiriku dengan sebungkus rokok di tangannya.
+<br> <br>
+"Nak, nggak ambil rokok? Biasanya remaja seumuranmu demen ngerokok," katanya sambil menawarkan rokok itu padaku.
+<br> <br>
+Aku tersenyum kecil. "Aku nggak boleh merokok, Pak. Rokok nggak baik buat kesehatan," jawabku tanpa mengalihkan pandangan dari gambaranku, yang entah kenapa hari itu dipenuhi dengan sketsa asap dan polusi.
+<br> <br>
+Si Janggut mengangguk pelan. "Itu bagus, Nak. Rokok memang nggak boleh untuk siapa pun. Anak saya saja sekarang kena paru-paru basah gara-gara rokok," ucapnya tiba-tiba.
+<br> <br>
+Aku menghentikan pensilku. "Anak Bapak? Paru-paru basah?" tanyaku, kaget.
+<br> <br>
+Si Janggut, yang biasanya paling semangat dan ceria di antara para kuli, tiba-tiba terlihat sangat berbeda. Matanya berkaca-kaca, dan nada suaranya memberat. "Iya, Nak. Anakku kena paru-paru basah. Sudah tahap akhir."
+<br> <br>
+Aku terdiam, menatapnya, tidak tahu harus berkata apa.
+<br> <br>
+"Dia seharusnya dirawat di rumah sakit, tapi biayanya mahal sekali, sementara Bapak cuma kuli dengan upah kecil. Gaji kami di sini pas-pasan buat makan saja," katanya lagi, suaranya bergetar.
+<br> <br>
+Hatiku mencelos. Aku tidak tahu bagaimana harus merespons. Kata-kata apa yang bisa membuat rasa sakit itu sedikit berkurang? Aku memikirkan banyak hal, tapi tidak satu pun terasa cukup.
+<br> <br>
+Akhirnya, aku berdiri, membuka dompetku, dan mengambil uang sebesar 5 LB. Tidak banyak, tapi itu semua yang bisa aku berikan. "Ini, Pak. Sedikit rejeki buat Bapak. Saya tahu ini tidak cukup, tapi mudah-mudahan bisa membantu," kataku sambil menyerahkan uang itu.
+<br> <br>
+Si Janggut tertegun. Matanya membelalak, seolah tidak percaya. "Nak, Bapak nggak minta dikasihani..." katanya pelan, tapi aku bisa melihat tangannya gemetar saat menerima uang itu.
+<br> <br>
+"Bukan soal kasihan, Pak. Saya cuma mau sedikit membantu," kataku, tersenyum kecil.
+<br> <br>
+Dia menunduk, menggenggam uang itu erat. "Terima kasih, Nak. Bapak doakan, semoga segala urusanmu dimudahkan. Kamu orang baik."
+v
+Aku mengangguk, berusaha menyembunyikan rasa haru yang tiba-tiba menyeruak. "Semoga Bapak bisa bertemu anak Bapak lagi, dan semuanya membaik," jawabku lirih.
+v
+Hari sudah malam. Kami berpisah untuk pulang ke tempat masing-masing, tapi perasaan berat itu tetap tinggal di dadaku. Aku berjalan perlahan, memikirkan betapa mahalnya harga hidup di kota ini. Kota yang indah, tapi keras untuk orang seperti Si Janggut.
+v
+Setelah satu bulan penuh kerja keras, rumah itu akhirnya berdiri tegak. Rumah yang akan menjadi tempat tinggalku. Melihatnya selesai dengan begitu indah, aku tidak bisa menahan senyum. Ini rumah pertama yang benar-benar kurancang dari awal hingga selesai. Rasanya seperti melihat mimpiku perlahan menjadi kenyataan.
+v
+Namun, di tengah kebahagiaanku, ada rasa kosong yang mulai menjalar. Proyek ini sudah selesai, dan itu berarti waktuku bersama para kuli berotot—termasuk Si Janggut dan Si Kumis—juga akan segera berakhir.
+<br> <br>
+Aku berdiri di depan rumah, mengamati detail terakhirnya. Langit sore mulai berubah jingga ketika Si Janggut dan Si Kumis menghampiriku. Mereka berdiri di depanku dengan senyum lelah tapi puas.
+<br> <br>v
+"Nak, kami pamit dulu. Sudah waktunya kami pulang ke rumah masing-masing," kata Si Janggut dengan nada lembut, tapi aku bisa menangkap sedikit kesedihan dalam suaranya.
+<br> <br>
+"Kami senang bisa kerja sama arsitek muda yang baik hati, apalagi yang sering traktir kopi sama pisang goreng," tambah Si Kumis sambil tertawa kecil. Ekspresi jenaka itu selalu berhasil membuat suasana lebih ringan.
+<br> <br>
+Aku tertawa kecil mendengar lelucon Si Kumis, tapi tawa itu segera berubah menjadi sesuatu yang lebih emosional. Aku menggigit bibir, mencoba menahan air mata yang mulai menggenang. "Terima kasih, ya. Kalau bukan karena kalian, rumah ini nggak akan pernah jadi. Kalian luar biasa," kataku dengan suara bergetar.
+<br> <br>
+Mendengar itu, Si Janggut tersenyum tipis, lalu menepuk pundakku perlahan. "Jangan nangis, Nak. Kita ini tim. Tim itu nggak akan benar-benar berpisah, selama masih ada proyek di depan sana."
+<br> <br>
+Tapi aku tidak bisa berhenti menangis. Aku merasa seperti anak kecil yang harus berpisah dengan orang-orang yang sudah menjadi keluarganya sendiri. "Baiklah," kataku sambil mengusap mata. "Aku akan ingat kalian. Kalau ada proyek baru, aku pasti akan memanggil kalian lagi."
+<br> <br>
+"Siap, Arsitek Muda!" sahut Si Kumis sambil menunjukkan otot lengannya, seolah ingin memamerkan hasil kerja kerasnya. Aku tertawa kecil di tengah tangis.
+<br> <br>
+Mereka akhirnya pergi satu per satu, bergabung dengan barisan para kuli lainnya. Tapi sebelum benar-benar pergi, Si Kumis berbalik dan berlari kecil ke arahku, membawa sesuatu di tangannya.
+<br> <br>
+"Tunggu sebentar!" serunya.
+<br> <br>
+Aku menatapnya dengan bingung. Dalam hati aku berpikir, Padahal aku sudah ingin rebahan di rumah baru ini sebelum kembali ke proyek berikutnya.
+<br> <br>
+Si Kumis menyerahkan sesuatu kepadaku—sebuah kartu kecil. "Ini. Kamu pasti akan membutuhkannya nanti," katanya sambil tersenyum lebar.
+<br> <br>
+Aku menerima kartu itu dan membacanya. Kartu undangan grup olahraga. Aku langsung ingat, ini adalah kartu yang dulu pernah diberikan oleh Ciera, salah satu kolega di kantor. Tapi apa hubungannya sekarang?
+<br> <br>
+"Grup olahraga? Untuk apa?" tanyaku bingung.
+<br> <br>
+Si Kumis tertawa kecil, suaranya berat tapi penuh semangat. "Ketua grup olahraga itu adalah bapakku sendiri. Kamu kan kelihatan lemas, kecil, dan nggak ada otot. Jadi, biar gampang dapat cewek, ikutlah latihan sama kami!" katanya, sambil menunjuk tubuhku yang kurus tanpa ampun.
+<br> <br>
+Aku terdiam. Kenapa semua orang selalu menganggap aku kecil dan lemah? Apa aku benar-benar selemah itu?
+<br> <br>
+Si Kumis tertawa keras, puas dengan reaksiku, lalu berlari kembali ke barisan kuli yang sudah menunggunya. Aku hanya berdiri di sana, menatap kartu di tanganku.
+<br> <br>
+Malam mulai turun perlahan, langit berubah kelam, tapi aku masih memikirkan kata-kata Si Kumis. Apa aku harus benar-benar ikut grup olahraga itu?</p>
 
-Aku benci berpindah-pindah dari satu kota ke kota lain demi pekerjaanku. Bukan karena aku tidak suka perjalanan—tapi karena jalanan itu sendiri adalah musuhku. Lihat saja, jalan dari kota ke kota harus melewati hutan dengan lintasan penuh batu kasar, berlubang, dan terabaikan. Kayaknya jalanan ini belum pernah disentuh perbaikan sejak zaman dinosaurus punah. Aku bahkan merasa kalau batu-batu itu sengaja menunggu mobilku lewat untuk meledakkan bannya. Aku sudah mengeluarkan uang lebih untuk ban baru, entah sudah berapa kali. Benar-benar menyiksa dompetku. Kalau bisa, aku ingin tinggal di satu kota indah, dengan jalanan mulus, setidaknya untuk setahun saja. Tapi hidupku, seperti biasa, tidak pernah semudah itu. <br> <br>
-
-Besok paginya, aku melangkah masuk ke kantor FCorp, tempat aku bekerja. Hari ini akan ada pembagian tugas baru untuk para arsitek. Sejujurnya, ini adalah salah satu momen yang selalu kunantikan. <i> Apa aku menantikannya karena aku berharap mendapat proyek di kota indah? </i> Tidak, tentu saja tidak. Aku menunggu ini karena... aku bisa duduk berdekatan dengan Ciera, seorang kolega yang entah bagaimana selalu berhasil membuatku kehilangan fokus.<br> <br>
-
-Aku menyukai Ciera. Bukan cinta pada pandangan pertama, tapi, ya... bisa dibilang hampir seperti itu. Aku tidak tahu bagaimana menjelaskan perasaanku—dia terlalu berbeda dariku. Dia tenang, penuh percaya diri, tapi juga sarkastik dan dingin. Semacam teka-teki hidup yang selalu ingin kupecahkan. <br> <br>
-
-Ketika rapat dimulai, seperti biasa, aku berusaha memastikan aku bisa duduk cukup dekat dengannya. Aku hanya ingin mencuri beberapa detik untuk memandang wajahnya, itu saja. Namun, seperti biasa juga, Ciera selalu menyadarinya. <br> <br>
-
-"Kenapa kamu memandangku seperti itu? Kamu aneh tahu," katanya, dengan nada datar dan ekspresi yang nyaris tak berubah. <br> <br>
-
-"Eh, aku cuma... memandang poster di belakangmu," jawabku buru-buru, mencoba terdengar santai.<br> <br>
-
-Dia menoleh ke belakang, ke arah poster yang aku maksud. Sekilas aku pikir dia akan marah atau merasa terganggu, tapi ternyata dia malah tersenyum, meskipun senyum itu lebih seperti menahan tawa. "Seleramu aneh juga," katanya sambil menunjuk poster itu.<br> <br>
-
-Aku menoleh ke arah yang sama, dan langsung ingin menghilang ke bawah meja. Poster itu adalah iklan panggilan untuk para kuli berotot, dengan gambar pria-pria besar yang memamerkan otot mereka di bawah terik matahari. Apa-apaan ini? Malunya bukan main. Aku hanya bisa mengalihkan pandangan kembali ke presentasi di depan ruangan, pura-pura fokus pada omong kosong motivasi dari petinggi perusahaan. <br> <br>
-
-Tapi sebenarnya, tidak ada satu pun kata dari mereka yang masuk ke telingaku. Aku terlalu sibuk memikirkan bagaimana aku bisa memperbaiki kesan di depan Ciera. Hidupku benar-benar penuh dengan momen-momen memalukan seperti ini. <br> <br> </p>
-<p align="center"> 2 </p>
-        
-        </div>
+      </div>
         <div class="book-page" id="page-3">
-            
-            <p>Rapat akhirnya selesai. Aku bersandar di kursi, hampir tertidur, sampai tiba-tiba salah satu petinggi mendatangiku dengan sebuah amplop tebal. Amplop itu tampak begitu menjanjikan—cukup untuk membuatku langsung tersadar. Aku menatapnya dengan penuh harap. "Apa ini? Bonus? Uang? Atau... uang?" pikirku. Otakku memang sederhana: apa lagi yang bisa diharapkan selain uang? <br> <br>
-
-Dengan rasa penasaran dan sedikit terlalu banyak imajinasi, aku membuka amplop itu. Namun, begitu aku melihat isinya, harapanku runtuh seperti gedung tanpa fondasi yang benar. Dokumen tugas. Ya, tugas baru. Aku terdiam, mencoba mencerna kekecewaanku. "Kenapa sih hidup selalu begini?" gerutuku dalam hati.  <br> <br>
-
-Tapi tunggu. Tugas kali ini ada yang berbeda. Nama lokasinya: Lembah Emas. Aku membaca lagi untuk memastikan. Lembah Emas? Apa itu berarti ada emas di mana-mana? Kalau benar, bukankah aku bisa kaya? Pikiran itu langsung membakar semangatku. "Ini mungkin kesempatan terbaikku untuk mengubah nasib!" pikirku sambil buru-buru mengemasi barang-barangku. <br> <br>
-
-Peralatan kerja adalah hal yang paling aku jaga. Jam tangan, topi arsitek, dan jas andalan yang pernah menolongku dari banyak kejadian buruk. Ah, terlalu banyak cerita tentang itu, jadi aku malas menjelaskannya sekarang. Fokusku adalah Lembah Emas. Aku hanya perlu bersiap-siap dan berangkat.  <br> <br>
-
-Namun, sebelum aku benar-benar bisa berlari keluar kantor, Ciera tiba-tiba muncul di hadapanku. Langkahnya tergesa-gesa, dan wajahnya terlihat seperti ada hal penting yang ingin disampaikan. Jantungku langsung berdegup lebih cepat. Sesuatu yang penting! Apa ini saatnya? Apakah dia akan bilang dia menyukaiku?  <br> <br>
-
-"North, aku ingin mengatakan sesuatu," katanya, serius. <br> <br>
-
-Ini dia! Aku menunggu dengan seluruh ekspektasi terbaik yang pernah kumiliki. Rasanya seluruh dunia berhenti sejenak, hanya menyisakan aku dan Ciera di ruangan itu. <br> <br>
-
-"Kalau kamu mau badan yang bagus, mending coba masuk ke grup olahraga milik ayahku. Dia pelatih terbaik, mantan tentara. Aku yakin dia bisa membantumu," katanya, tanpa jeda.  <br> <br>
-
-Dang. Rasanya seperti ditampar papan proyek. Ekspetasiku hancur berkeping-keping. Aku terdiam, setengah kaku seperti batu bata baru dicetak. "Baiklah, aku mungkin akan mempertimbangkannya. Aku punya banyak kegiatan lain, jadi mungkin aku bisa di hari libur," jawabku akhirnya, mencoba tetap terdengar cool.  <br> <br>
-
-Ciera hanya mengangguk ringan, lalu pergi begitu saja tanpa banyak basa-basi. Biasa. Begitulah dia. Kadang aku bertanya-tanya kenapa aku bisa tertarik pada seseorang yang selalu menghancurkan ekspektasiku berkali-kali. <br> <br>
-
-Setelah kejadian itu, aku kembali fokus pada tugas ke Lembah Emas. Aku memeriksa daftar barang bawaan dan memastikan semua siap. Ini akan menjadi perjalanan panjang, dan aku harus benar-benar mempersiapkan diri. Aku berjalan ke mobil dengan penuh semangat, tapi… dimana kunciku? Aku mengaduk-aduk kantong celana, tas, dan bahkan jas favoritku, tapi kunci itu tidak ada di mana-mana. "Astaga, kenapa lagi hidupku begini?"  <br> <br> </p>
-      <p align="center"> 3 </p>
-      
+            <h2>Bab 3 - Penemuan Baru</h2>
+            <p>Aku menemukan sesuatu yang mengubah segalanya. Pengait di atap, bangunan yang terus direnovasi...</p>
         </div>
         <div class="book-page" id="page-4">
-           
-            <p>Kereta akhirnya berhenti di stasiun Lembah Emas. Aku melangkah keluar dengan koper besar di tangan, sedikit terengah karena beban beratnya. Semua ini gara-gara aku lupa di mana menaruh kunci mobilku. Untungnya, mobil itu kutinggalkan di parkiran yang katanya aman. Kata Satpam sih begitu. Tapi, ya... aku tidak pernah benar-benar yakin. <br> <br>
-
-Udara di kota ini terasa berbeda. Ada aroma khas yang tidak bisa kujelaskan, semacam bau logam yang samar, bercampur dengan aroma bunga-bunga dari taman kota yang terlihat dari kejauhan. Ini adalah kota impianku—tempat di mana kekayaan dan kesuksesan seperti menetes dari setiap sudutnya. Orang-orang selalu bilang kalau mata uang LB, mata uang lokal kota ini, punya nilai yang lebih tinggi dibandingkan kota mana pun. Tapi sekarang, aku tidak merasa seperti orang sukses. Aku hanya merasa seperti orang asing dengan koper berat dan dompet tipis.<br> <br>
-
-Saat melangkah keluar dari halte, mataku tertuju pada seorang pria yang sedang membagikan brosur. Tapi tunggu, dia bukan pembagi brosur biasa. Penampilannya... terlalu mewah. Jasnya hitam rapi dengan dasi merah anggur yang mengilap. Bahkan sepatunya tampak lebih mahal dari koperku. Dia seperti orang kaya yang nyasar menjadi pemasar jalanan.<br> <br>
-
-Aku mendekatinya dengan rasa penasaran. Pria itu menoleh, dan senyumnya segera merekah, seperti dia sudah menungguku sejak tadi. Yang kuingat jelas darinya adalah aroma khas cengkih yang tajam.<br> <br>
-
-"Halo, Tuan," sapanya ramah. Suaranya lembut tapi ada sesuatu yang membuatnya terasa menusuk. "Apa Anda baru di sini? Saya punya penawaran bagus untuk Anda. Sebuah peta lengkap Kota Lembah Emas. Jika Anda tersesat, peta ini akan menjadi penyelamat Anda." <br> <br>
-
-Aku menatapnya lekat-lekat, mencoba menganalisisnya. Ada sesuatu yang aneh dari cara dia berbicara, seperti dia tahu sesuatu tentangku. "Berapa harga brosur itu?" tanyaku, mencoba terdengar santai. <br> <br>
-
-"Hanya 10 LB. Itu setara dengan <b> Rp100.000 </b>. Penawaran yang sangat murah untuk pendatang baru seperti Anda," katanya sambil tersenyum lebih lebar.<br> <br>
-
-100.000? Aku hampir tersedak udara. Itu uang terakhirku. Uang makan sebulan saja tidak pernah sebesar itu. Aku membuka dompet, memastikan lagi kalau aku tidak salah. Ya, isinya cuma 100.000 pas. Sial, hari ini benar-benar tidak berpihak padaku.<br> <br>
-
-Aku menatap pria itu lagi, lalu ke brosur di tangannya. Rasa ragu dan frustrasi berperang di kepalaku. "Baiklah," gumamku akhirnya, menarik napas panjang sebelum mengeluarkan uang itu. Tanganku gemetar saat menyerahkannya.<br> <br>
-
-"Wah, Tuan, Anda benar-benar murah hati... dan naif," katanya sambil tersenyum, kali ini lebih tajam. Aku masih memegang ujung uangnya, ragu-ragu melepaskannya.<br> <br>
-
-"Apa tidak ada diskon? 20% saja?" tanyaku, mencoba negosiasi terakhir dengan suara kecil.<br> <br>
-
-"Maaf, tidak ada diskon. Anda sudah memutuskan membelinya, jadi uang tidak bisa dikembalikan," jawabnya dengan nada tegas tapi tetap sopan. <br> <br>
-
-Dengan berat hati, aku akhirnya merelakan uang terakhirku. Pria itu menggenggam uangku dengan ringan, lalu memasukkannya ke kantong celana hitamnya dengan anggun. Dia merapikan dasinya, menatapku lagi dengan tatapan yang sulit diartikan. <br> <br>
-
-"Terima kasih sudah berbisnis dengan saya, Tuan. Tapi, izinkan saya memberi Anda peringatan," katanya, suaranya tiba-tiba lebih pelan namun tajam. "Kota ini bukanlah tempat untuk orang senaif Anda. Di sini, baik orang jahat maupun orang baik bisa menghabisi Anda. Saya harap Anda siap." <br> <br>
-
-Sebelum aku sempat merespons, dia melangkah pergi dengan tenang, tanpa pamit. Bau cengkihnya masih tertinggal di udara.<br> <br>
-
-Aku berdiri di sana, memegang brosur yang baru saja menghabiskan seluruh uangku. Kata-katanya terus terngiang di kepalaku. "Orang baik pun bisa menghabisi Anda." <i> Apa maksudnya? Kenapa dia berbicara seolah-olah dia tahu sesuatu tentangku? </i> <br> <br>
-
-Tapi aku memutuskan untuk mengabaikan semua itu. Aku terlalu lelah dan lapar untuk memikirkan hal-hal aneh. Yang penting sekarang adalah mencari makan... walaupun aku bahkan tidak tahu bagaimana melakukannya tanpa uang.</p> <br> <br>
-<p align="center"> 4 </p>
+            <h2>Bab 4 - Akhir dari Misteri</h2>
+            <p>Pada akhirnya, aku mengetahui kebenarannya. Kota ini menyimpan rahasia besar yang tidak pernah
+                terungkap...</p>
         </div>
 
         <div class="controls">
@@ -354,12 +636,17 @@ Tapi aku memutuskan untuk mengabaikan semua itu. Aku terlalu lelah dan lapar unt
         </div>
     </div>
     <div class="zoom-controls">
-        <button id="zoom-in">➕</button>
-        <button id="zoom-out">➖</button>
+        <button id="zoom-in" align="left">➕</button>
+        <button id="zoom-out" align="left">➖</button>
     </div>
-
-    <button id="scroll-top">⬆️</button>
-
+  
+    
+    <footer>
+        <p>© 2024 Firdaus Server by Firdaus Ramdan and North Foundation</p>
+        <button id="scroll-top" onclick="scrollToTop()">↑</button>
+    
+    </footer>
+    
     <script>
         const pages = document.querySelectorAll('.book-page');
         const prevButton = document.getElementById('prev');
@@ -452,6 +739,22 @@ Tapi aku memutuskan untuk mengabaikan semua itu. Aku terlalu lelah dan lapar unt
             }, 2000); // Sembunyikan peringatan setelah 2 detik
         }
 
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+        
+        function shareOnFacebook() {
+            const url = window.location.href;
+            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+            window.open(facebookUrl, '_blank');
+        }
+
+        function shareOnTwitter() {
+            const url = window.location.href;
+            const text = "Check out this content!";
+            const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
+            window.open(twitterUrl, '_blank');
+        }
     </script>
 </body>
 
